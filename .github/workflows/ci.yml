@@ -64,6 +64,7 @@ jobs:
             gel7acprodeus1file0.blob.core.windows.net:443
             github.com:443
             objects.githubusercontent.com:443
+            prtcacprodeus2file7.blob.core.windows.net:443
       - name: Checkout repo
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
         with:
