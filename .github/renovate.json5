@@ -15,4 +15,5 @@
    // required for merging
   "rebaseWhen": "behind-base-branch",
   "bumpVersion": "patch"
+  "ignorePaths": [".github/**"]
 }
