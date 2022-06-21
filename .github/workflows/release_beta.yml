@@ -1,0 +1,126 @@
+name: Publish release (beta)
+on: 
+  push:
+    tags:
+     - 'v*-beta*'
+     - 'v*-alpha*'
+  workflow_dispatch:
+permissions:
+  contents: read
+
+jobs:
+   upload-normal:
+    name: Create non-optimized datapack
+    runs-on: ubuntu-latest
+    steps:
+     - name: Harden Runner
+       uses: step-security/harden-runner@cdea734fa57747b9831aa9d6fcb274c5f9669557
+       with:
+         egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
+     - name: Clone repository
+       uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+       with:
+         fetch-depth: 0
+     - name: Check commands
+       uses: mcbeet/check-commands@740e5fb3c385a5a5775f9ab6c963745200cb71aa
+       with:
+          source: .
+          minecraft: 1.18
+     - name: Check JSON
+       uses: ocular-d/json-linter@7d3716a34bcd6fcc5b3b38141a21b9e02da6531d
+     - name: Upload artifact
+       uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
+       with:
+         path: |
+             assets/
+             data/
+             pack.mcmeta
+             pack.png
+         name: muffinhunt-datapack v2.0.0-alpha2
+
+         
+   upload-optimized-datapack:
+    permissions:
+      actions: read  # for ComunidadAylas/PackSquash-action to get latest artifact
+    name: Optimize datapack
+    runs-on: ubuntu-latest
+    needs: upload-normal
+    steps:
+     - name: Harden Runner
+       uses: step-security/harden-runner@cdea734fa57747b9831aa9d6fcb274c5f9669557
+       with:
+         egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
+     - name: Download normal pack
+       uses: actions/download-artifact@076f0f7dd036d87e8e04f5f00d614e790308961b
+       with:
+         name: muffinhunt-datapack v2.0.0-alpha2
+         path: ./
+     - name: Run PackSquash
+       uses: ComunidadAylas/PackSquash-action@c3641c92cc0e4ff6ee88db9a34b6a2d48fcfcc71
+       with:
+          path: ./
+          token: ${{ secrets.GITHUB_TOKEN }}
+          minify_json_files: true
+          validate_pack_metadata_file: true
+          allow_optifine_mod: true
+          delete_bloat_json_keys: true
+          artifact_name: 'optimized-muffinhunt-datapack v2.0.0-alpha2'
+          never_store_squash_times: true
+
+
+   create-release:
+     permissions:
+       contents: write  # for softprops/action-gh-release to create GitHub release
+       issues: read  # for heinrichreimer/github-changelog-generator-action to fetch issues and labels
+       pull-requests: read  # for heinrichreimer/github-changelog-generator-action to fetch PRs and labels
+     name: Create release
+     needs: [upload-normal,upload-optimized-datapack]
+     runs-on: ubuntu-latest
+     steps:
+       - name: Harden Runner
+         uses: step-security/harden-runner@cdea734fa57747b9831aa9d6fcb274c5f9669557
+         with:
+           egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
+       - name: Checkout repo
+         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+         with:
+           token: ${{ secrets.GH_TOKEN }}
+       - name: Generate release changelog
+         uses: heinrichreimer/github-changelog-generator-action@6653241a44afb59146f719f322005de49a5c3b38
+         with:
+           token: ${{ secrets.GITHUB_TOKEN }}
+           dateFormat: '%m/%d/%Y'
+       - name: Download normal pack
+         uses: actions/download-artifact@076f0f7dd036d87e8e04f5f00d614e790308961b
+         with:
+           name: muffinhunt-datapack v2.0.0-alpha2
+       - name: Zip pack
+         run: zip 'muffinhunt-datapack v2.0.0-alpha2' -r data pack.mcmeta pack.png
+       - name: Delete datapack
+         run: rm -r data pack.mcmeta pack.png  
+       - name: Download optimized pack
+         uses: actions/download-artifact@076f0f7dd036d87e8e04f5f00d614e790308961b
+         with:
+           name: optimized-muffinhunt-datapack v2.0.0-alpha2
+       - name: Zip optimized pack
+         run: |
+           unzip -f pack.zip
+           zip -r 'optimized-muffinhunt-datapack v2.0.0-alpha2' . -i data pack.mcmeta pack.png
+       - name: Release
+         uses: softprops/action-gh-release@50195ba7f6f93d1ac97ba8332a178e008ad176aa
+         with:
+           files: |
+             *.zip
+           body_path: CHANGELOG.md
+       - name: Commit changes
+         run: |
+            echo ${GITHUB_REF#refs/*/}
+            git config --local user.name "actions-user"
+            git config --local user.email "action@github.com"
+            git add CHANGELOG.md
+            git commit -m "[ci skip] Updated CHANGELOG.md for ${{ github.ref }}"
+            git push origin HEAD:master
+            

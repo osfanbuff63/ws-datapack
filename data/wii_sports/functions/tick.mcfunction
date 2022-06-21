@@ -1,0 +1,1 @@
+execute as @a if score @s WiiSports.Menu matches 1 run function wii_sports:menu

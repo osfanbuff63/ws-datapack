@@ -1,0 +1,23 @@
+name: Greetings
+
+on: [pull_request, issues]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@cdea734fa57747b9831aa9d6fcb274c5f9669557
+      with:
+        egress-policy: block
+        allowed-endpoints: >
+          api.github.com:443
+
+    - uses: actions/first-interaction@dafa9ae191faeec3f6b68445495727a43143b42a
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        issue-message: 'Welcome to the repository! Make sure to read the README.md specifically the Contributing section, before continuing, if you have not already!'
+        pr-message: 'Welcome to the repository! Make sure to read the README.md, specifically the Contributing section, before continuing, if you have not already! And thanks for helping out with a PR! It is very helpful sometimes :)'

@@ -1,0 +1,6 @@
+# Normalize text to LF
+* text=auto
+
+*.off linguist-language=yaml
+
+*.json linguist-language=jsonc

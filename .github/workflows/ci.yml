@@ -1,0 +1,81 @@
+# Notice how there is an extra complile and upload step.
+# This is due to how the build-main job checks for errors. Instead of using a script,
+# such as, /gradlew build, with this being a datapack, it checks the source files instead. (see Check commands and Check JSON.)
+# This is completely intentional, please do not create a PR changing it!
+
+name: CI
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+jobs:
+  build-main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@cdea734fa57747b9831aa9d6fcb274c5f9669557
+        with:
+         egress-policy: block
+         allowed-endpoints: >
+          artifactcache.actions.githubusercontent.com:443
+          files.pythonhosted.org:443
+          gel7acprodeus1file0.blob.core.windows.net:443
+          github.com:443
+          pipelines.actions.githubusercontent.com:443
+          pypi.org:443
+          api.github.com:443
+      - name: Checkout repo
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - name: Dependency Review
+        if: github.event_name == 'pull_request'
+        uses: actions/dependency-review-action@1c59cdf2a9c7f29c90e8da32237eb04b81bad9f0
+      - name: Check commands
+        uses: mcbeet/check-commands@740e5fb3c385a5a5775f9ab6c963745200cb71aa
+        with:
+          source: .
+          minecraft: 1.18
+      - name: Check JSON
+        uses: ocular-d/json-linter@7d3716a34bcd6fcc5b3b38141a21b9e02da6531d
+      - name: Compile and upload
+        uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
+        with:
+          name: muffinhunt-datapack v2.0.0-SNAPSHOT
+          path: |
+            assets/
+            data/
+            pack.mcmeta
+            pack.png
+          if-no-files-found: error
+  build-packsquash:
+    permissions:
+      actions: read  # for ComunidadAylas/PackSquash-action to get latest artifact
+      contents: read  # for actions/checkout to fetch code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@cdea734fa57747b9831aa9d6fcb274c5f9669557
+        with:
+          egress-policy: block
+          allowed-endpoints: >
+            api.github.com:443
+            artifactcache.actions.githubusercontent.com:443
+            gel7acprodeus1file0.blob.core.windows.net:443
+            github.com:443
+            objects.githubusercontent.com:443
+      - name: Checkout repo
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+        with:
+          fetch-depth: 0
+      - name: Run PackSquash
+        uses: ComunidadAylas/PackSquash-action@c3641c92cc0e4ff6ee88db9a34b6a2d48fcfcc71
+        with:
+          path: ./
+          token: ${{ secrets.GITHUB_TOKEN }}
+          minify_json_files: true
+          validate_pack_metadata_file: true
+          allow_optifine_mod: true
+          delete_bloat_json_keys: true
+          artifact_name: 'optimized-muffinhunt-datapack v2.0.0-SNAPSHOT'
+  
