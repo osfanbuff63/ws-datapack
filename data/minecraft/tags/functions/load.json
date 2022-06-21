@@ -1,6 +1,6 @@
 {
     "replace": false,
     "values": [
-        "wii_sports:load"
+        "ws_datapack:load"
     ]
 }

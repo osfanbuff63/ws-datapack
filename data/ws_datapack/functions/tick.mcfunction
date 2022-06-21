@@ -1,0 +1,1 @@
+execute as @a if score @s WS.Menu matches 1 run function ws_datapack:menu
