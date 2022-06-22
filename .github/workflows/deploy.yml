@@ -1,0 +1,30 @@
+name: Build and Deploy to GitHub Pages
+on: [push, pull_request]
+jobs:
+  build_and_deploy:
+    # Only run on PRs if the source branch is on someone else's repo
+    if: ${{ github.event_name != 'pull_request' || github.repository != github.event.pull_request.head.repo.full_name }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+      - name: Setup ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1.2
+      - name: Build Jekyll
+        uses: limjh16/jekyll-action-ts@v2
+        with:
+          enable_cache: true
+      - name: Deploy to GitHub Pages
+        # Only deploy on commits to master
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'       
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          publish_branch: gh-pages # Just to make sure it doesn't change with an update
+          user_name: actions-user
+          user_email: action@github.com
+          full_commit_message: 'deploy site update from ${{ github.actor }}: ${{ github.event.head_commit.message }} (${{ github.sha }})'
+          force_orphan: true

@@ -4,15 +4,12 @@
 # This is completely intentional, please do not create a PR changing it!
 
 name: CI
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-  workflow_dispatch:
+on: [push, pull_request, workflow_dispatch]
 jobs:
   build-main:
     runs-on: ubuntu-latest
+    # Only run on PRs if the source branch is on someone else's repo
+    if: ${{ github.event_name != 'pull_request' || github.repository != github.event.pull_request.head.repo.full_name }}   
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@cdea734fa57747b9831aa9d6fcb274c5f9669557
@@ -41,7 +38,7 @@ jobs:
       - name: Compile and upload
         uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
         with:
-          name: muffinhunt-datapack v2.0.0-SNAPSHOT
+          name: ws-datapack v0.1.0-SNAPSHOT
           path: |
             assets/
             data/
@@ -52,6 +49,8 @@ jobs:
     permissions:
       actions: read  # for ComunidadAylas/PackSquash-action to get latest artifact
       contents: read  # for actions/checkout to fetch code
+    # Only run on PRs if the source branch is on someone else's repo
+    if: ${{ github.event_name != 'pull_request' || github.repository != github.event.pull_request.head.repo.full_name }}      
     runs-on: ubuntu-latest
     steps:
       - name: Harden Runner
@@ -78,5 +77,5 @@ jobs:
           validate_pack_metadata_file: true
           allow_optifine_mod: true
           delete_bloat_json_keys: true
-          artifact_name: 'optimized-muffinhunt-datapack v2.0.0-SNAPSHOT'
+          artifact_name: '[UNZIP ME] optimized-ws-datapack v0.1.0-SNAPSHOT'
   

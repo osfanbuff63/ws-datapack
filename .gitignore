@@ -64,9 +64,3 @@ spyglass.json
 
 # Temporary files
 *.tmp
-
-# Bundler for docs
-/docs/.bundle/
-/docs/vendor/bundle
-/docs/lib/bundler/man/
-/_site/

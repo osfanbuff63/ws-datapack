@@ -1,0 +1,1 @@
+tellraw @s {"text": "The WS Datapack hasn't been set up yet! Run `/trigger WS.Setup` to start setup!"}
