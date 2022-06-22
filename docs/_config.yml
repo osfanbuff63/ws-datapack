@@ -27,10 +27,11 @@ url: "https://osfanbuff63.github.io" # the base hostname & protocol for your sit
 github_username: osfanbuff63
 
 # Build settings
-theme: minima
+theme: minimal-mistakes-jekyll
 plugins:
   - jekyll-feed
 include: [_pages]
+minimal_mistakes_skin: "dark" 
 
 # Exclude from processing.
 # The following items will not be processed, by default.
