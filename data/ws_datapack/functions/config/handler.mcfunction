@@ -8,3 +8,6 @@ execute as @a if score @s WS.Config matches 2 if score WS.Setup WS.Setup matches
 execute as @a if score @s WS.Config matches 3 run tellraw @s [{"text": "The Wuhu Island map has been toggled","color": "gold"},{"text": " off!","color": "red"}]
 execute as @a if score @s WS.Config matches 3 run scoreboard players set WS.Island WS.Config 0
 execute as @a if score @s WS.Config matches 3 if score WS.Setup WS.Setup matches 0 run function ws_datapack:setup/wuhu_island_map
+
+# Remove scoreboard value (*must be kept at the end of file*)
+scoreboard players set @s WS.Config 0

@@ -1,0 +1,1 @@
+execute as @a[sort=random,limit=1,scores={WS.Game=1}] run place structure ws_datapack:archery/1
