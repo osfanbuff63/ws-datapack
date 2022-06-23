@@ -1,6 +1,6 @@
 
 <!--
-MuffinHunt Datapack bug fix submission guide
+WS Datapack bug fix submission guide
 ====================================
 NOTE: Failure to fill out this template properly may result in your PR being
       delayed or ignored without warning.
@@ -8,11 +8,11 @@ NOTE: Don't type between any arrows in the template, as this text will be
       hidden. This includes this header block and any other explanation text
       blocks.
 
-MuffinHunt Datapack is GPL
+WS Datapack is GPL
 ------------------
-By contributing to EssentialsX, you agree to license your code under the
+By contributing to the WS Datapack, you agree to license your code under the
 GNU General Public License version 3, which can be found at the link below:
-https://github.com/osfanbuff63/muffinhunt-datapack/blob/master/LICENSE.md
+https://github.com/osfanbuff63/ws-datapack/blob/master/LICENSE.md
 
 Instructions
 ------------
@@ -24,7 +24,7 @@ If you are submitting a bug fix, please follow the following steps:
       delayed or rejected without warning.
       
       You can open a new bug report by following this link:
-      https://github.com/osfanbuff63/muffinhunt-datapack/issues/new/choose 
+      https://github.com/osfanbuff63/ws-datapack/issues/new/choose 
 2.  When linking logs or config files, do not attach them to the post!
       Copy and paste any logs into https://gist.github.com/, then paste a
       link to them in the relevant parts of the template. Do not use Hastebin

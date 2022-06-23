@@ -1,6 +1,6 @@
 <!--
 
-MuffinHunt Datapack feature submission guide
+WS Datapack feature submission guide
 ====================================
 
 NOTE: Failure to fill out this template properly may result in your PR being
@@ -10,12 +10,12 @@ NOTE: Don't type between any arrows in the template, as this text will be
       hidden. This includes this header block and any other explanation text
       blocks.
 
-MuffinHunt Datapack is GPL
+WS Datapack is GPL
 ------------------
 
-By contributing to MuffinHunt Datapack, you agree to license your code under the
+By contributing to the WS Datapack, you agree to license your code under the
 GNU General Public License version 3, which can be found at the link below:
-https://github.com/osfanbuff63/muffinhunt-datapack/blob/master/LICENSE.md
+https://github.com/osfanbuff63/ws-datapack/blob/master/LICENSE.md
 
 Instructions
 ------------
@@ -32,7 +32,7 @@ If you are submitting a new feature, please follow the following steps:
       request, your PR may be delayed or rejected without warning.
       
       You can open a new feature request by following this link:
-      https://github.com/osfanbuff63/muffinhunt-datapack/issues/new/choose
+      https://github.com/osfanbuff63/ws-datapack/issues/new/choose
 
 2.  If you are fixing a performance issue, please use the "Bug fix" PR template
       instead. The "bug fix" template is better suited to performance issues.

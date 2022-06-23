@@ -6,7 +6,7 @@ body:
 - type: markdown
   attributes:
     value: |
-      Hi! Thanks for coming to report a bug in the MuffinHunt Datapack! Please make sure that this is a bug with this datapack, and not another one! Fill out this form, and the bug will be reported!
+      Hi! Thanks for coming to report a bug in the WS Datapack! Please make sure that this is a bug with this datapack, and not another one! Fill out this form, and the bug will be reported!
 - type: checkboxes
   attributes:
     label: Is there an existing issue for this?

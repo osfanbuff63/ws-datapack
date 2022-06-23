@@ -1,11 +1,12 @@
 name: Feature request
 description: Suggest a feature!
 title: "[Feature Request] Your request here!"
+labels: [enhancement]
 body:
 - type: markdown
   attributes:
     value: |
-      Hi! Thanks for coming to suggest a feature for the MuffinHunt Datapack! Please make sure that you've considered this feature for a while. If you aren't sure, bring it up in the [discussions](https://github.com/osfanbuff63/muffinhunt-datapack/) first!
+      Hi! Thanks for coming to suggest a feature for the WS Datapack! Please make sure that you've considered this feature for a while. If you aren't sure, bring it up in the [discussions](https://github.com/osfanbuff63/muffinhunt-datapack/) first!
 - type: checkboxes
   attributes:
     label: Is there an existing issue for this?
