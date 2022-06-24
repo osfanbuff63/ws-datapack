@@ -28,8 +28,8 @@ execute as @a if score @s WS.Config matches 1 run function ws_datapack:config/me
 execute as @a if score @s WS.Config matches 2 run function ws_datapack:config/handler
 
 # Game triggers: won't be disabled until the end of the game
-execute if score WS.Game WS.Game matches 1 if score WS.Island WS.Config matches 1 run function ws_datapack:archery/tick
+execute if score WS.Game WS.Game matches 1 run function ws_datapack:archery/tick
 
 # These only run once
-execute as @a if score @s WS.Game matches 1 if score WS.Island WS.Config matches 0 unless score WS.Game WS.Game matches 1 run schedule function ws_datapack:archery/place1 1s
+execute as @a if score @s WS.Game matches 1 if score WS.Island WS.Config matches 0 unless score WS.Game WS.Game matches 1 run schedule function ws_datapack:archery/place_1 1s
 execute as @a if score @s WS.Game matches 1 unless score WS.Game WS.Game matches 1 run schedule function ws_datapack:archery/load 1s

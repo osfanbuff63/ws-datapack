@@ -1,0 +1,1 @@
+place structure ws_datapack:archery/2

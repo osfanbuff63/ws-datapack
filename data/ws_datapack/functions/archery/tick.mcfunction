@@ -18,7 +18,7 @@
 
 # Determine if a target has been hit, and if so, add it to the total score
 execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target run scoreboard players operation @s WS.Archery.Target += @s WS.Archery.Score
-execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target unless score WS.Archery.Shot WS.Archery.Shot > WS.Archery.Shot.Max WS.Archery run scoreboard players add WS.Archery.Shot WS.Archery.Shot 1
+execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target unless score WS.Archery.Shot WS.Archery.Shot > WS.Archery.Shot.Max WS.Archery.Shot run scoreboard players add WS.Archery.Shot WS.Archery.Shot 1
 execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target run title @s title {"score": {"objective": "WS.Archery.Target", "name": "@s"},"color": "gold"}
 execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target run scoreboard players set @s WS.Archery.Target 0
 
