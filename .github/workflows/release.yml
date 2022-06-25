@@ -102,7 +102,7 @@ jobs:
        - name: Zip pack
          run: zip 'ws-datapack v0.1.0' -r data assets pack.mcmeta pack.png LICENSE.md
        - name: Delete datapack
-         run: rm -r data pack.mcmeta pack.png assets LICENSE.md
+         run: rm -r data pack.mcmeta pack.png assets 
        - name: Download optimized pack
          uses: actions/download-artifact@076f0f7dd036d87e8e04f5f00d614e790308961b
          with:
@@ -111,6 +111,7 @@ jobs:
          run: |
            mkdir packsquash
            unzip -f pack.zip -d /packsquash/
+           mv LICENSE.md /packsquash/
            cd packsquash
            zip -r 'optimized-ws-datapack v0.1.0' . -i data assets pack.mcmeta pack.png LICENSE.md
            mv 'optimized-ws-datapack v0.1.0' ..
