@@ -13,5 +13,3 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-execute as @a[sort=random,limit=1,scores={WS.Game=1}] run place structure ws_datapack:archery/1

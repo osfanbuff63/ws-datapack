@@ -15,20 +15,20 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # Menu trigger
-execute as @a if score @s WS.Menu matches 1 run function ws_datapack:menu
+execute as @a if score @s WS.Menu matches 1 run schedule function ws_datapack:menu 5t
 scoreboard players enable @s WS.Menu
 
 # Setup-related triggers
-execute as @a if score @s WS.Setup matches 1 run function ws_datapack:setup/start_setup
-execute as @a if score @s WS.Setup matches 2 run function ws_datapack:setup/wuhu_island_map
+execute as @a if score @s WS.Setup matches 1 run schedule function ws_datapack:setup/start_setup 5t
+execute as @a if score @s WS.Setup matches 2 run schedule function ws_datapack:setup/wuhu_island_map 5t
 execute as @a unless score WS.Setup WS.Setup matches 1 run scoreboard players enable @s WS.Setup
 
 # Config triggers
-execute as @a if score @s WS.Config matches 1 run function ws_datapack:config/menu
-execute as @a if score @s WS.Config matches 2 run function ws_datapack:config/handler
+execute as @a if score @s WS.Config matches 1 run schedule function ws_datapack:config/menu 5t
+execute as @a if score @s WS.Config matches 2 run schedule function ws_datapack:config/handler 5t
 
 # Game triggers: won't be disabled until the end of the game
-execute if score WS.Game WS.Game matches 1 run function ws_datapack:archery/tick
+execute if score WS.Game WS.Game matches 1 run schedule function ws_datapack:archery/tick 5t
 
 # These only run once
 execute as @a if score @s WS.Game matches 1 if score WS.Island WS.Config matches 0 unless score WS.Game WS.Game matches 1 run schedule function ws_datapack:archery/place_1 1s
