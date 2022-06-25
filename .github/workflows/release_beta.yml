@@ -82,7 +82,9 @@ jobs:
          uses: step-security/harden-runner@cdea734fa57747b9831aa9d6fcb274c5f9669557
          with:
            egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
-
+       - name: Get the version
+         id: get_version
+         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
        - name: Checkout repo
          uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
          with:
@@ -97,9 +99,9 @@ jobs:
          with:
            name: ws-datapack v0.1.0-alpha1
        - name: Zip pack
-         run: zip 'ws-datapack v0.1.0-alpha1' -r data/ pack.mcmeta pack.png
+         run: zip 'ws-datapack v0.1.0-alpha1' -r data assets pack.mcmeta pack.png LICENSE.md
        - name: Delete datapack
-         run: rm -r data/ pack.mcmeta pack.png  
+         run: rm -r data assets pack.mcmeta pack.png LICENSE.md
        - name: Download optimized pack
          uses: actions/download-artifact@076f0f7dd036d87e8e04f5f00d614e790308961b
          with:
@@ -109,7 +111,7 @@ jobs:
            mkdir packsquash
            unzip -f pack.zip -d /packsquash/
            cd packsquash
-           zip -r 'optimized-ws-datapack v0.1.0-alpha1' . -i data pack.mcmeta pack.png
+           zip -r 'optimized-ws-datapack v0.1.0-alpha1' . -i data assets pack.mcmeta pack.png LICENSE.md
            mv 'optimized-ws-datapack v0.1.0-alpha1' ..
            cd ..
        - name: Release
@@ -124,6 +126,6 @@ jobs:
             git config --local user.name "actions-user"
             git config --local user.email "action@github.com"
             git add CHANGELOG.md
-            git commit -m "[ci skip] Updated CHANGELOG.md for ${{ github.ref }}"
+            git commit -m "[ci skip] Updated CHANGELOG.md for ${{ steps.get_version.outputs.VERSION }}"
             git push origin HEAD:master
             

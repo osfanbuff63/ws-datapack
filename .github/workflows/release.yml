@@ -22,12 +22,11 @@ jobs:
        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
        with:
          fetch-depth: 0
-         ref: v1.7-LTS
      - name: Check commands
        uses: mcbeet/check-commands@740e5fb3c385a5a5775f9ab6c963745200cb71aa
        with:
           source: .
-          minecraft: 1.18
+          minecraft: 1.19
      - name: Check JSON
        uses: ocular-d/json-linter@7d3716a34bcd6fcc5b3b38141a21b9e02da6531d
      - name: Upload artifact
@@ -38,7 +37,8 @@ jobs:
              data/
              pack.mcmeta
              pack.png
-         name: muffinhunt-datapack v2.0.0
+             LICENSE.md
+         name: ws-datapack v0.1.0
 
          
    upload-optimized-datapack:
@@ -56,7 +56,7 @@ jobs:
      - name: Download normal pack
        uses: actions/download-artifact@076f0f7dd036d87e8e04f5f00d614e790308961b
        with:
-         name: muffinhunt-datapack v2.0.0
+         name: ws-datapack v0.1.0
          path: ./
      - name: Run PackSquash
        uses: ComunidadAylas/PackSquash-action@c3641c92cc0e4ff6ee88db9a34b6a2d48fcfcc71
@@ -67,7 +67,7 @@ jobs:
           validate_pack_metadata_file: true
           allow_optifine_mod: true
           delete_bloat_json_keys: true
-          artifact_name: 'optimized-muffinhunt-datapack v2.0.0'
+          artifact_name: '[UNZIP ME] optimized-ws-datapack v0.1.0'
           never_store_squash_times: true
 
    create-release:
@@ -83,7 +83,9 @@ jobs:
          uses: step-security/harden-runner@cdea734fa57747b9831aa9d6fcb274c5f9669557
          with:
            egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
-
+       - name: Get the version
+         id: get_version
+         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
        - name: Checkout repo
          uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
          with:
@@ -96,19 +98,23 @@ jobs:
        - name: Download normal pack
          uses: actions/download-artifact@076f0f7dd036d87e8e04f5f00d614e790308961b
          with:
-           name: muffinhunt-datapack v1.7.1
+           name: ws-datapack v0.1.0
        - name: Zip pack
-         run: zip 'muffinhunt-datapack v1.7.1' -r data pack.mcmeta pack.png
+         run: zip 'ws-datapack v0.1.0' -r data assets pack.mcmeta pack.png LICENSE.md
        - name: Delete datapack
-         run: rm -r data pack.mcmeta pack.png  
+         run: rm -r data pack.mcmeta pack.png assets LICENSE.md
        - name: Download optimized pack
          uses: actions/download-artifact@076f0f7dd036d87e8e04f5f00d614e790308961b
          with:
            name: optimized-muffinhunt-datapack v1.7.1
        - name: Zip optimized pack
          run: |
-           unzip -f pack.zip
-           zip -r 'optimized-muffinhunt-datapack v1.7.1' . -i data pack.mcmeta pack.png
+           mkdir packsquash
+           unzip -f pack.zip -d /packsquash/
+           cd packsquash
+           zip -r 'optimized-ws-datapack v0.1.0' . -i data assets pack.mcmeta pack.png LICENSE.md
+           mv 'optimized-ws-datapack v0.1.0' ..
+           cd ..
        - name: Release
          uses: softprops/action-gh-release@50195ba7f6f93d1ac97ba8332a178e008ad176aa
          with:
@@ -121,6 +127,6 @@ jobs:
             git config --local user.name "actions-user"
             git config --local user.email "action@github.com"
             git add CHANGELOG.md
-            git commit -m "[ci skip] Updated CHANGELOG.md for ${{ github.ref }}"
+            git commit -m "[ci skip] Updated CHANGELOG.md for ${{ steps.get_version.outputs.VERSION }}"
             git push origin HEAD:master
             
