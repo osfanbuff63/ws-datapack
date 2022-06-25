@@ -33,7 +33,7 @@ jobs:
         uses: mcbeet/check-commands@740e5fb3c385a5a5775f9ab6c963745200cb71aa
         with:
           source: .
-          minecraft: 1.18
+          minecraft: 1.19
       - name: Check JSON
         uses: ocular-d/json-linter@7d3716a34bcd6fcc5b3b38141a21b9e02da6531d
       - name: Compile and upload
