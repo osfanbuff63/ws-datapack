@@ -3,5 +3,5 @@
 
 *.json linguist-language=jsonc
 
-*.json linguist-detectable=true
-*.md linguist-detectable=true
+/assets/** linguist-detectable=true
+/data/** linguist-detectable=true
