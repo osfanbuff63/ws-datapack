@@ -2,6 +2,8 @@
 * text=auto
 
 *.json linguist-language=jsonc
+*.mcmeta linguist-language=jsonc
 
 /assets/** linguist-detectable=true
 /data/** linguist-detectable=true
+*.mcmeta linguist-detectable=true
