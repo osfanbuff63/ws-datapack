@@ -65,7 +65,7 @@ If you already have the repo locally to work on, you can skip this step. **MAKE 
 
 Once you have completed the changes, here's what to do:
 
-1. Run `bundle install` if you made any changes to the `Gemfile` or `Gemfile.lock`, and then run `bundle exec jekyll serve`. This will build the site and deploy it to [https://localhost:4000]. If this fails, try to fix your error, but otherwise check out the site and make sure it works properly!
+1. Run `bundle install` if you made any changes to the `Gemfile` or `Gemfile.lock`, and then run `bundle exec jekyll serve`. This will build the site and deploy it to [https://localhost:4000](https://localhost:4000). If this fails, try to fix your error, but otherwise check out the site and make sure it works properly!
 2. Once you are done, hit Ctrl+C and enter `y` once or twice until it stops.
 3. If youare using an IDE and it has a commit option, do that, but **DON'T SYNC OR PUSH TO THE REMOTE!**. If your IDE doesn't, run `git commit -m "Your message here!"`, where "Your message here!" is a useful description of your changes.
 4. Open a terminal if it isn't already open to your directory (if you used one in the last step, you don't need to open another), and run `gh pr create`. If prompted, select `Create a fork of osfanbuff63/ws-datapack` or select `yourusername/ws-datapack` if you already created one.
