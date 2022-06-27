@@ -16,7 +16,7 @@
 
 # Reusable for detecting the score and adding it
 # This is used by the tick file for archery, and so is run around 20 times a second
-# TODO: merge local changes on home machine to source repo (how'd i forgot lol)
+
 execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power1 run scoreboard players add @s WS.Archery.Score 1
 execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power2 run scoreboard players add @s WS.Archery.Score 2
 execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power3 run scoreboard players add @s WS.Archery.Score 3

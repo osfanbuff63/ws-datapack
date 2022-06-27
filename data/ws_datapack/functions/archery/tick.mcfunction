@@ -20,7 +20,7 @@
 # Has to be done individually for every possible power (1-15)
 # So we end up with 15 commands, and it has to be detected twice in this function.
 # Potentially move into its own function at some point?
-function ws_datapack:archery/reusables/detect
+execute if score WS.Game WS.Game matches 1 run function ws_datapack:archery/reusables/detect_score
 
 # Add a shot to the total count for this stage
 # TODO: This needs to be changed to be player-based for #6 to work
