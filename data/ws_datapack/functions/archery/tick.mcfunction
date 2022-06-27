@@ -20,39 +20,7 @@
 # Has to be done individually for every possible power (1-15)
 # So we end up with 15 commands, and it has to be detected twice in this function.
 # Potentially move into its own function at some point?
-
-execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power1 run scoreboard players add @s WS.Archery.Score 1
-execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power2 run scoreboard players add @s WS.Archery.Score 2
-execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power3 run scoreboard players add @s WS.Archery.Score 3
-execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power4 run scoreboard players add @s WS.Archery.Score 4
-execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power5 run scoreboard players add @s WS.Archery.Score 5
-execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power6 run scoreboard players add @s WS.Archery.Score 6
-execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power7 run scoreboard players add @s WS.Archery.Score 7
-execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power8 run scoreboard players add @s WS.Archery.Score 8
-execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power9 run scoreboard players add @s WS.Archery.Score 9
-execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power10 run scoreboard players add @s WS.Archery.Score 10
-execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power11 run scoreboard players add @s WS.Archery.Score 11
-execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power12 run scoreboard players add @s WS.Archery.Score 12
-execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power13 run scoreboard players add @s WS.Archery.Score 13
-execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power14 run scoreboard players add @s WS.Archery.Score 14
-execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power15 run scoreboard players add @s WS.Archery.Score 15
-
-# Title for how many points you got. This is detected the same way that the other is above, read the notes on line 19
-execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power1 run title @s title {"text": "1","color": "dark_blue"}
-execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power2 run title @s title {"text": "2","color": "dark_blue"}
-execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power3 run title @s title {"text": "3","color": "dark_blue"}
-execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power4 run title @s title {"text": "4","color": "dark_blue"}
-execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power5 run title @s title {"text": "5","color": "blue"}
-execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power6 run title @s title {"text": "6","color": "blue"}
-execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power7 run title @s title {"text": "7","color": "blue"}
-execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power8 run title @s title {"text": "8","color": "blue"}
-execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power9 run title @s title {"text": "9","color": "dark_green"}
-execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power10 run title @s title {"text": "10","color": "dark_green"}
-execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power11 run title @s title {"text": "11","color": "dark_green"}
-execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power12 run title @s title {"text": "12","color": "green"}
-execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power13 run title @s title {"text": "13","color": "green"}
-execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power14 run title @s title {"text": "14","color": "green"}
-execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power15 run title @s title {"text": "15","color": "gold"}
+function ws_datapack:archery/reusables/detect
 
 # Add a shot to the total count for this stage
 # TODO: This needs to be changed to be player-based for #6 to work
