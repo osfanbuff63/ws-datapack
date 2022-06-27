@@ -18,6 +18,8 @@
 
 # Determine if a target has been hit, and if so, decide how many redstone power the target block has obtained and add that number to the total score. 
 # Has to be done individually for every possible power (1-15)
+# So we end up with 15 commands, and it has to be detected twice in this function.
+# Potentially move into its own function at some point?
 
 execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power1 run scoreboard players add @s WS.Archery.Score 1
 execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power2 run scoreboard players add @s WS.Archery.Score 2
@@ -35,7 +37,7 @@ execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if pr
 execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power14 run scoreboard players add @s WS.Archery.Score 14
 execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power15 run scoreboard players add @s WS.Archery.Score 15
 
-# Title for how many points you got. Cannot use variables because points are detected above via predicate
+# Title for how many points you got. This is detected the same way that the other is above, read the notes on line 19
 execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power1 run title @s title {"text": "1","color": "dark_blue"}
 execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power2 run title @s title {"text": "2","color": "dark_blue"}
 execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power3 run title @s title {"text": "3","color": "dark_blue"}
@@ -53,6 +55,7 @@ execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if pr
 execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target if predicate ws_datapack:archery/power15 run title @s title {"text": "15","color": "gold"}
 
 # Add a shot to the total count for this stage
+# TODO: This needs to be changed to be player-based for #6 to work
 execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target unless score WS.Archery.Shot WS.Archery.Shot > WS.Archery.Shot.Max WS.Archery.Shot run scoreboard players add WS.Archery.Shot WS.Archery.Shot 1
 execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target run scoreboard players set @s WS.Archery.Target 0
 
