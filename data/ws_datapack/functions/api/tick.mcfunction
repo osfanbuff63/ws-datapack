@@ -17,4 +17,3 @@
 # This will handle all API calls, when the API is enabled (which is it by default).
 # TODO: Make the different API calls and document them in /docs/ and in comments.
 execute if score WS.API WS.Config matches 1 as @a[tag=spam] run tellraw @s "This is a temporary command! Run `/tag @s remove spam` if you see this!"
-
