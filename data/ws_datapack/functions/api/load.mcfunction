@@ -14,7 +14,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# This will handle all API calls, when the API is enabled (which is it by default).
-# TODO: Make the different API calls and document them in /docs/ and in comments.
-execute if score WS.API WS.Config matches 1 as @a[tag=spam] run tellraw @s "This is a temporary command! Run `/tag @s remove spam` if you see this!"
+# Add everything for the API to work
+# Technically the API has support for being configurable, but I don't plan to actually implement this in the config menu.
+# Even if I do, it will be on by default and probably in a confirmation to say you really shouldn't turn this off :P
 
+scoreboard objectives add WS.API dummy
