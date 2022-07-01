@@ -23,8 +23,8 @@ where gh
 if not %errorlevel%==0 winget install --id GitHub.CLI
 set %errorlevel% 0
 where ruby
-:: when connected to internet (working offline): make sure this package is valid
-if not %errorlevel%==0 winget install --id Ruby.RubyInstaller
+:: The devkit isn't strictly needed but a good idea anyway
+if not %errorlevel%==0 winget install --id RubyInstallerTeam.RubyWithDevKit
 
 if %errorlevel%==0 goto Clone
 
