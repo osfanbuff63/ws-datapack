@@ -2,8 +2,8 @@ name: Build and Deploy to GitHub Pages
 on: 
   push:
     paths: ['/docs/**']
-  pull_request:
-    paths: ['/docs/**']
+    branches: '**'
+  workflow_dispatch:
 jobs:
   build_and_deploy:
     # Only run on PRs if the source branch is on someone else's repo
