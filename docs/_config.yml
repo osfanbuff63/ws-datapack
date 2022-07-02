@@ -29,10 +29,17 @@ github_username: osfanbuff63
 # Build settings
 theme: minimal-mistakes-jekyll
 plugins:
-  - jekyll-feed
-include: [_pages]
+  - "jekyll-feed"
 minimal_mistakes_skin: "dark" 
-
+defaults:
+   - scope:
+       path: ""
+       type: pages
+     values:
+       layout: single
+       author_profile: false
+       sidebar: true
+include: [_pages]
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
