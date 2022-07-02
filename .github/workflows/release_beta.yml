@@ -110,7 +110,7 @@ jobs:
          run: |
            mkdir packsquash
            unzip -f pack.zip -d /packsquash/
-           mv LICENSE.md /packsquash/
+           mv LICENSE.md ./packsquash/
            cd packsquash
            zip -r 'optimized-ws-datapack v0.1.0-alpha1' . -i data assets pack.mcmeta LICENSE.md
            mv 'optimized-ws-datapack v0.1.0-alpha1' ..
