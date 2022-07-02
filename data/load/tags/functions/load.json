@@ -1,0 +1,7 @@
+{
+    "values": [
+		"#player_action:load",
+        "ws_datapack:load",
+        "#block_utils:load"
+	]
+}
