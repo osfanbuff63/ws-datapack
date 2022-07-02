@@ -15,10 +15,16 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.1.2
-      - name: Build Jekyll
+      - name: Build with Jekyll (pr)
         uses: limjh16/jekyll-action-ts@v2
+        if: ${{ github.event_name = 'pull_request' }}
         with:
-          enable_cache: true
+          enable_cache: false
+      - name: Build with Jekyll (master)
+        uses: limjh16/jekyll-action-ts@v2
+        if: ${{ github.event_name != 'push' && github.ref == 'refs/heads/master' }}
+        with:
+          enable_cache: false          
       - name: Deploy to GitHub Pages
         # Only deploy on commits to master
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'       
