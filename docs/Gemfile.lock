@@ -83,7 +83,12 @@ GEM
       faraday (>= 0.17.3, < 3)
     terminal-table (2.0.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
+    tzinfo (2.0.4)
+      concurrent-ruby (~> 1.0)
+    tzinfo-data (1.2022.1)
+      tzinfo (>= 1.0.0)
     unicode-display_width (1.8.0)
+    wdm (0.1.1)
     webrick (1.7.0)
 
 PLATFORMS
@@ -101,4 +106,4 @@ DEPENDENCIES
   webrick (~> 1.7.0)
 
 BUNDLED WITH
-   2.3.16
+   2.3.17
