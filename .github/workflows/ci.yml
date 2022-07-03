@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-latest, ubuntu-20.04, ubuntu-22.04, windows-2019, windows-2022] # I honestly don't know why I used a matrix here
+        os: [macos-latest, ubuntu-20.04, ubuntu-22.04] # I honestly don't know why I used a matrix here
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@74b568e8591fbb3115c70f3436a0c6b0909a8504
@@ -27,14 +27,8 @@ jobs:
       - name: Get script and run test (Unix)
         if: ${{ runner.os != 'Windows' }}
         run: |
-          curl -sS https://rawgithubusercontent.com/${{ steps.get_ref.outputs.BRANCH }}/scripts/ci/checklibraries.sh
+          wget https://rawgithubusercontent.com/${{ steps.get_ref.outputs.BRANCH }}/scripts/ci/checklibraries.sh
           ./checklibraries.sh
-      - name: Get script and run test (Windows)
-        if: ${{ runner.os == 'Windows' }}
-        shell: pwsh
-        run: |
-          Invoke-Web-Request https://rawgithubusercontent.com/${{ steps.get_ref.outputs.BRANCH }}/scripts/ci/checklibraries.bat
-          .\checklibraries.bat
   build-main:
     runs-on: ubuntu-latest
     needs: check-dependencies
