@@ -27,7 +27,7 @@ jobs:
       - name: Get script and run test (Unix)
         if: ${{ runner.os != 'Windows' }}
         run: |
-          wget https://rawgithubusercontent.com/${{ steps.get_ref.outputs.BRANCH }}/scripts/ci/checklibraries.sh
+          mv ./scripts/ci/checklibraries.sh .
           ./checklibraries.sh
   build-main:
     runs-on: ubuntu-latest
