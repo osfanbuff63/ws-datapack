@@ -27,7 +27,7 @@ jobs:
       - name: Get script and run test (Unix)
         if: ${{ runner.os != 'Windows' }}
         run: |
-          mv ./scripts/ci/checklibraries.sh .
+          sudo mv ./scripts/ci/checklibraries.sh .
           ./checklibraries.sh
   build-main:
     runs-on: ubuntu-latest
