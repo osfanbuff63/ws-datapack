@@ -25,12 +25,12 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - name: Get script and run test (Unix)
-        if: ${{ runner.os != "Windows" }}
+        if: ${{ runner.os != 'Windows' }}
         run: |
           curl -sS https://rawgithubusercontent.com/${{ steps.get_ref.outputs.BRANCH }}/scripts/ci/checklibraries.sh
           ./checklibraries.sh
       - name: Get script and run test (Windows)
-        if: ${{ runner.os == "Windows" }}
+        if: ${{ runner.os == 'Windows' }}
         shell: pwsh
         run: |
           Invoke-Web-Request https://rawgithubusercontent.com/${{ steps.get_ref.outputs.BRANCH }}/scripts/ci/checklibraries.bat
@@ -85,6 +85,10 @@ jobs:
     permissions:
       actions: read  # for ComunidadAylas/PackSquash-action to get latest artifact
       contents: read  # for actions/checkout to fetch code
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-20.04, ubuntu-22.04] # this is temporary for the conversion of ubuntu-latest to ubuntu-22.04, but nothing should change between these  
     # Only run on PRs if the source branch is on someone else's repo
     if: ${{ github.event_name != 'pull_request' || github.repository != github.event.pull_request.head.repo.full_name }}      
     runs-on: ubuntu-latest
