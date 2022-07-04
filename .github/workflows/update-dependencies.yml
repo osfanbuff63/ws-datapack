@@ -18,6 +18,8 @@ jobs:
             github.com:443
             raw.githubusercontent.com:443
             gheus22ubt20eus5diag.blob.core.windows.net:443    
+            api.github.com:443
+            codeload.github.com:443
       - name: Checkout repo
         uses: actions/checkout@d0651293c4a5a52e711f25b41b05b2212f385d28
         with:
