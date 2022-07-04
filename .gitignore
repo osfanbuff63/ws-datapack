@@ -64,3 +64,6 @@ spyglass.json
 
 # Temporary files
 *.tmp
+
+# Cache files
+.cache
