@@ -41,5 +41,5 @@ jobs:
           git config --global user.email action@github.com
           git checkout -B actions/update-dependencies
           git add .
-          git commit -m "Updated dependencies"
+          git commit -m "Updated dependencies" --head
           gh pr create -b "This is an automated PR to update dependencies" -t "Update datapack dependencies" -B master -r '@osfanbuff63' -l dependencies
