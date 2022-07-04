@@ -13,7 +13,8 @@ jobs:
           egress-policy: block
           allowed-endpoints: >
             github.com:443
-            raw.githubusercontent.com:443    
+            raw.githubusercontent.com:443
+            gheus22ubt20eus5diag.blob.core.windows.net:443    
       - name: Checkout repo
         uses: actions/checkout@v3
         with:
