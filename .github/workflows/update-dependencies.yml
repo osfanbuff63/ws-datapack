@@ -32,6 +32,8 @@ jobs:
           chmod +x build-datapack.py
           python build-datapack.py .
       - name: Commit changes
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           git config --global user.name actions-user
           git config --global user.email action@github.com
