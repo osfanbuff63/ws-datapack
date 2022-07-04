@@ -1,7 +1,7 @@
 name: Automatically update datapack dependencies
 on:
   schedule:
-    - "15 7-21 * * *"
+    - "15 * 1-31 * *"
   workflow_dispatch:
 jobs:
   update-dependencies:
@@ -13,7 +13,17 @@ jobs:
          egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs       
       - name: Checkout repo
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GH_TOKEN }}
       - name: Get python file and run script
         run: |
           wget https://raw.githubusercontent.com/ICY105/DatapackBuildManager/main/build-datapack.py
           ./build-datapack.py .
+      - name: Commit changes
+        run: |
+          git config --global user.name actions-user
+          git config --global user.email action@github.com
+          git checkout -B actions/update-dependencies
+          git add .
+          git commit -m "Updated dependencies"
+          gh pr create -b "This is an automated PR to update dependencies" -t "Update datapack dependencies" -B master -r '@osfanbuff63' -l dependencies
