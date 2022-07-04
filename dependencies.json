@@ -1,0 +1,35 @@
+{
+    "namespaces": [
+      "ws_datapack",
+      "minecraft"
+    ],
+    "dependencies": [
+      {
+        "name": "Lantern Load",
+        "url": "https://github.com/LanternMC/load"
+      },
+      {
+        "name": "BlockUtisl",
+        "url": "https://github.com/ICY105/BlockUtils"
+      },
+      {
+        "name": "PlayerAction",
+        "url": "https://github.com/ICY105/PlayerAction"
+      }
+    ],
+    "append_function_tags": [
+      {
+        "tag": "load:load",
+        "value": "#ws_datapack:load"
+      },
+      {
+        "tag": "load:load",
+        "value": "#player_action:load"
+      },
+      {
+        "tag": "load:load",
+        "value": "#blockutils:load"
+      }
+    ],
+    "version": "v0.1.0-alpha1"
+  }

@@ -1,0 +1,19 @@
+name: Automatically update datapack dependencies
+on:
+  schedule:
+    - "15 7-21 * * *"
+  workflow_dispatch:
+jobs:
+  update-dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@74b568e8591fbb3115c70f3436a0c6b0909a8504
+        with:
+         egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs       
+      - name: Checkout repo
+        uses: actions/checkout@v3
+      - name: Get python file and run script
+        run: |
+          wget https://raw.githubusercontent.com/ICY105/DatapackBuildManager/main/build-datapack.py
+          ./build-datapack.py .
