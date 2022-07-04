@@ -17,4 +17,4 @@
 # TODO: menu
 scoreboard players set @s WS.Menu 0
 execute if score WS.Setup WS.Setup matches 0 run function ws_datapack:setup/no_setup
-execute unless score WS.Setup WS.Setup matches 0 run tellraw @s {"text":"menu coming soon!"}
+execute unless score WS.Setup WS.Setup matches 0 run tellraw @s [{"text": "----------- ","color": "red"},{"text": "WS Datapack Menu","color": "yellow","bold": true},{"text": "----------- ","color": "red"},"\n",{"text": "Select a Game","color": "blue","hoverEvent": {"action": "show_text","contents": {"text": "Click me to select a game!","color": "gold"}},"clickEvent": {"action": "run_command","value": "/trigger WS.Menu set 2"}}]

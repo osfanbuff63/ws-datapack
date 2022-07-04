@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# This function ends archery and if the map is enabled, teleports you to the center of Wuhu Town
-tellraw @a [{"text": "Archery has completed!","color": "gold"},"\n",{"text": "Total scores:","color": "gold"}]
-execute as @a run tellraw @a {"score": {"name": "*","objective": "WS.Archery.Score"},"color": "dark_aqua"}
-execute if score WS.Island WS.Config matches 1 run tellraw @a [{"text": "Would you like to teleport back to the center of Wuhu Town?","color": "gold"},"\n",{"text": "YES","color": "green","bold": true,"clickEvent": {"action": "run_command","value": "/trigger WS.Town"}},{"text": "                         "},{"text": "NO","color": "red","bold": true}]
+# Game selector tellraw
+# Add games to this as they are created.
+# It literally just runs /trigger WS.Game :P
+tellraw @s [{"text": "----------- ","color": "red"},{"text": "WS Datapack Game Selector","color": "yellow","bold": true},{"text": "----------- ","color": "red"},{"text": "Click on a game to select it!","color": "gold"},"\n",{"text": "Archery","color": "dark_aqua","bold": true,"hoverEvent": {"action": "show_text","contents": {"text": "Start Archery!","color": "green"}},"clickEvent": {"action": "run_command","value": "/trigger WS.Game set 1"}}]

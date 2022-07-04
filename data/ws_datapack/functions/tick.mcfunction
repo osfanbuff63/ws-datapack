@@ -16,7 +16,8 @@
 
 # Menu trigger
 execute as @a if score @s WS.Menu matches 1 run schedule function ws_datapack:menu 5t
-scoreboard players enable @s WS.Menu
+execute as @a if score @s WS.Menu matches 2 run schedule function ws_datapack:menu/games 5t
+execute as @a run scoreboard players enable @s WS.Menu
 
 # Setup-related triggers
 execute as @a if score @s WS.Setup matches 1 run schedule function ws_datapack:setup/start_setup 5t
@@ -26,10 +27,14 @@ execute as @a unless score WS.Setup WS.Setup matches 1 run scoreboard players en
 # Config triggers
 execute as @a if score @s WS.Config matches 1 run schedule function ws_datapack:config/menu 5t
 execute as @a if score @s WS.Config matches 2 run schedule function ws_datapack:config/handler 5t
+execute as @a run scoreboard players enable @s WS.Config
 
 # Game triggers: won't be disabled until the end of the game
 execute if score WS.Game WS.Game matches 1 run schedule function ws_datapack:archery/tick 5t
 
-# These only run once
+# TODO: these should be moved to their own file
 execute as @a if score @s WS.Game matches 1 if score WS.Island WS.Config matches 0 unless score WS.Game WS.Game matches 1 run schedule function ws_datapack:archery/place_1 1s
 execute as @a if score @s WS.Game matches 1 unless score WS.Game WS.Game matches 1 run schedule function ws_datapack:archery/load 1s
+
+# Wuhu Town trigger
+execute as @a if score @s WS.Game matches 1 if score WS.Island WS.Config matches 1 run tp @s -1246 22 571
