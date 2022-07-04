@@ -1,7 +1,7 @@
 name: Automatically update datapack dependencies
 on:
   schedule:
-    - "15 * 1-31 * *"
+    - cron: "15 * 1-31 * *"
   workflow_dispatch:
 jobs:
   update-dependencies:
