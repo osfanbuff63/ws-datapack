@@ -32,3 +32,5 @@ execute if score WS.Archery.Shot WS.Archery.Shot > WS.Archery.Shot.Max WS.Archer
 execute if score WS.Archery.Shot WS.Archery.Shot > WS.Archery.Shot.Max WS.Archery if score WS.Archery.Round WS.Archery.Round matches 2 run function ws_datapack:archery/end_stage_2
 execute if score WS.Archery.Shot WS.Archery.Shot > WS.Archery.Shot.Max WS.Archery if score WS.Archery.Round WS.Archery.Round matches 3 run function ws_datapack:archery/end_stage_3
 execute if score WS.Archery.Shot WS.Archery.Shot > WS.Archery.Shot.Max WS.Archery if score WS.Archery.Round WS.Archery.Round matches 4 run function ws_datapack:archery/end
+
+# Set the offhand to a carrotonastick
