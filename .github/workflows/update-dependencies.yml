@@ -40,6 +40,7 @@ jobs:
           git config --global user.name actions-user
           git config --global user.email action@github.com
           git checkout -B actions/update-dependencies
+          git push origin --set-upstream
           git add .
-          git commit -m "Updated dependencies" --head
+          git commit -m "Updated dependencies"
           gh pr create -b "This is an automated PR to update dependencies" -t "Update datapack dependencies" -B master -r '@osfanbuff63' -l dependencies
