@@ -14,6 +14,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+# LanternLoad requirements
+schedule function ws_datapack:tick 1t
+schedule function ws_datapack:archery/tick 1t
+
 # Menu trigger
 execute as @a if score @s WS.Menu matches 1 run schedule function ws_datapack:menu 5t
 execute as @a if score @s WS.Menu matches 2 run schedule function ws_datapack:menu/games 5t

@@ -1,6 +1,0 @@
-{
-    "replace": false,
-    "values": [
-        "ws_datapack:tick","ws_datapack:archery/reusables/detect_score","ws_datapack:api/tick"
-    ]
-}

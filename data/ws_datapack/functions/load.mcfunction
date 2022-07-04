@@ -19,3 +19,9 @@ scoreboard objectives add WS.Setup trigger "WS Datapack Setup"
 execute unless score WS.Setup WS.Setup matches 1 run function ws_datapack:setup/start_setup
 scoreboard objectives add WS.Config trigger "WS Datapack Config"
 scoreboard objectives add WS.Game trigger "WS Game Selector"
+
+# LanternLoad requirements
+schedule function ws_datapack:tick 1t
+# Bump version here when a major version is released
+scoreboard players set ws_datapack load.status 1
+# TODO: (at some point) use a system to detect dependencies if used, or conflicting datapacks
