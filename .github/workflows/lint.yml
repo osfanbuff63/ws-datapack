@@ -1,0 +1,27 @@
+name: Lint Code Base
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  lint:
+    name: Lint Code Base
+    runs-on: ubuntu-latest
+    # Only run on PRs if the source branch is on someone else's repo
+    if: ${{ github.event_name != 'pull_request' || github.repository != github.event.pull_request.head.repo.full_name }} 
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+        with:
+          # Full git history is needed to get a proper list of changed files within `super-linter`
+          fetch-depth: 0
+      - name: Lint Code Base
+        uses: github/super-linter@a320804d310fdeb8d1a46c6c6c1e615d443b10c9
+        # Am I the only one that finds it weird to use `env` instead of `with`? Lol
+        env:
+          VALIDATE_ALL_CODEBASE: false
+          DEFAULT_BRANCH: master
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_HTML: false
+          VALIDATE_MARKDOWN: false
+          IGNORE_GITIGNORED_FILES: true
+          VALIDATE_EDITORCONFIG: false
+          VALIDATE_JSON: true
+          
