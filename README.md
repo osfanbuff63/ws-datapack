@@ -16,6 +16,19 @@ This is a project heavily inspired by Wii Sports and a [Nintendo Hero video](htt
 
 I'm happy to hear you might be interested in contributing! Read [CONTRIBUTING.md](CONTRIBUTING.md) before starting, of course!
 
+## Libraries used
+
+This is a list of libraries used by this datapack.
+
+<details>
+  <summary>Libraries used</summary>
+  
+  - [LanternLoad](https://github.com/LanternMC/load) by LanternMC, licensed under the 0BSD license
+  - [BlockUtils](https://github.com/ICY105/BlockUtils) by ICY105, licensed under the MIT license
+  - [PlayerAction](https://github.com/ICY105/PlayerAction) by ICY105, licensed under the MIT license
+  
+</details>
+
 ## License
 
 ```text

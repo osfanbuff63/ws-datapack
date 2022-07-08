@@ -1,0 +1,46 @@
+name: Automatically update datapack dependencies
+on:
+  #schedule:
+    #- cron: "15 * 1-31 * *"
+  workflow_dispatch:
+permissions:
+  contents: read
+
+jobs:
+  update-dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@74b568e8591fbb3115c70f3436a0c6b0909a8504
+        with:
+          egress-policy: block
+          allowed-endpoints: >
+            github.com:443
+            raw.githubusercontent.com:443
+            gheus22ubt20eus5diag.blob.core.windows.net:443    
+            api.github.com:443
+            codeload.github.com:443
+      - name: Checkout repo
+        uses: actions/checkout@d0651293c4a5a52e711f25b41b05b2212f385d28
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+      - name: Setup python
+        uses: actions/setup-python@d09bd5e6005b175076f227b13d9730d56e9dcfcb
+        with:
+          python-version: "3.10"
+      - name: Get python file and run script
+        run: |
+          wget https://raw.githubusercontent.com/ICY105/DatapackBuildManager/main/build-datapack.py
+          chmod +x build-datapack.py
+          python build-datapack.py .
+      - name: Commit changes
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          git config --global user.name actions-user
+          git config --global user.email action@github.com
+          git checkout -B actions/update-dependencies
+          git push --set-upstream origin actions/update-dependencies
+          git add .
+          git commit -m "Updated dependencies"
+          gh pr create -b "This is an automated PR to update dependencies" -t "Update datapack dependencies" -B master -r '@osfanbuff63' -l dependencies
