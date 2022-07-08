@@ -22,3 +22,4 @@ jobs:
           VALIDATE_HTML: false
           VALIDATE_MARKDOWN: false
           IGNORE_GITIGNORED_FILES: true
+          VALIDATE_EDITORCONFIG: false
