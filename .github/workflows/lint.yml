@@ -23,3 +23,5 @@ jobs:
           VALIDATE_MARKDOWN: false
           IGNORE_GITIGNORED_FILES: true
           VALIDATE_EDITORCONFIG: false
+          VALIDATE_JSON: true
+          
