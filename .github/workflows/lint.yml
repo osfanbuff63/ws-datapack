@@ -19,7 +19,6 @@ jobs:
           VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: master
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          EDITORCONFIG_FILE_NAME: .editorconfig
           VALIDATE_HTML: false
           VALIDATE_MARKDOWN: false
           IGNORE_GITIGNORED_FILES: true
