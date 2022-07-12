@@ -1,0 +1,2 @@
+extends: relaxed
+indentation: {spaces: consistent, indent-sequences: consistent}

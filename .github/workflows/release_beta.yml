@@ -94,6 +94,15 @@ jobs:
          with:
            token: ${{ secrets.GITHUB_TOKEN }}
            dateFormat: '%m/%d/%Y'
+       - name: Make directory
+         run: mkdir changelog
+       - name: Generate release changelog (Single tag)
+         uses: heinrichreimer/github-changelog-generator-action@6653241a44afb59146f719f322005de49a5c3b38
+         with:
+           token: ${{ secrets.GITHUB_TOKEN }}
+           dateFormat: '%m/%d/%Y'
+           onlyLastTag: true
+           output: /changelog/CHANGELOG.md           
        - name: Download normal pack
          uses: actions/download-artifact@076f0f7dd036d87e8e04f5f00d614e790308961b
          with:
