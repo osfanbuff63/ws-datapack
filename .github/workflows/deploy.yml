@@ -24,7 +24,7 @@ jobs:
         uses: limjh16/jekyll-action-ts@v2
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
         with:
-          enable_cache: false          
+          enable_cache: true
       - name: Deploy to GitHub Pages
         # Only deploy on commits to master
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'       
