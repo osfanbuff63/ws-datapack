@@ -87,7 +87,11 @@ jobs:
     name: Lint Code Base
     runs-on: ubuntu-latest
     # Only run on PRs if the source branch is on someone else's repo
-    if: ${{ github.event_name != 'pull_request' || github.repository != github.event.pull_request.head.repo.full_name }} 
+    if: ${{ github.event_name != 'pull_request' || github.repository != github.event.pull_request.head.repo.full_name }}
+    # This is needed since this takes like 2 min to run
+    concurrency: 
+      group: ${{ github.ref }}
+      cancel-in-progress: true
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@74b568e8591fbb3115c70f3436a0c6b0909a8504
