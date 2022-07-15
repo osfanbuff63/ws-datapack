@@ -7,6 +7,7 @@ name: CI
 on: [push, pull_request, workflow_dispatch]
 jobs:
   build-main:
+    name: Main CI Build
     runs-on: ubuntu-latest
     # Only run on PRs if the source branch is on someone else's repo
     if: ${{ github.event_name != 'pull_request' || github.repository != github.event.pull_request.head.repo.full_name }}   
@@ -54,6 +55,7 @@ jobs:
     # Only run on PRs if the source branch is on someone else's repo
     if: ${{ github.event_name != 'pull_request' || github.repository != github.event.pull_request.head.repo.full_name }}      
     runs-on: ubuntu-latest
+    name: Build with PackSquash
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@74b568e8591fbb3115c70f3436a0c6b0909a8504
@@ -80,7 +82,7 @@ jobs:
           allow_optifine_mod: true
           delete_bloat_json_keys: true
           artifact_name: '[UNZIP ME] optimized-ws-datapack v0.1.0-SNAPSHOT'
-          
+
   lint:
     name: Lint Code Base
     runs-on: ubuntu-latest
