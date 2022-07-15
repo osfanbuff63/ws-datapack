@@ -96,13 +96,17 @@ jobs:
       - name: Harden Runner
         uses: step-security/harden-runner@74b568e8591fbb3115c70f3436a0c6b0909a8504
         with:
-          egress-policy: audit
-      - name: Checkout Code
+          egress-policy: block
+          allowed-endpoints: >
+            api.github.com:443
+            github.com:443
+            gheus22ubt20eus211diag.blob.core.windows.net:443
+      - name: Checkout repo
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
         with:
           # Full git history is needed to get a proper list of changed files within `super-linter`
           fetch-depth: 0
-      - name: Lint Code Base
+      - name: Lint code base
         uses: github/super-linter@a320804d310fdeb8d1a46c6c6c1e615d443b10c9
         # Am I the only one that finds it weird to use `env` instead of `with`? Lol
         env:
