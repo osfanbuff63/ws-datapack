@@ -1,4 +1,4 @@
-# Created by https://gitignore.io
+# Created in part by https://gitignore.io
 
 # Created by git for backups
 *.orig
@@ -67,3 +67,6 @@ spyglass.json
 
 # Cache files
 .cache
+
+# Changelog for one tag. This should be ignored as if it is pushed to source it will all break
+changelog/
