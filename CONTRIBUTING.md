@@ -1,6 +1,6 @@
 # Contributing to the WS Datapack
 
-<!-- TODO: make .sh and .bat scripts for all the command line commands -->
+<!-- WIP: make .sh and .bat scripts for all the command line commands -->
 
 Thanks in advance for wanting to contribute! There are two main spots where you can contribute, both in code (resource pack and data pack), and documentation. First, there's a few things you'll need to contribute no matter what:
 
