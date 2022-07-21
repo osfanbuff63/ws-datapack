@@ -19,12 +19,11 @@
 # Determine if a target has been hit, and if so, decide how many redstone power the target block has obtained and add that number to the total score. 
 # Has to be done individually for every possible power (1-15)
 # So we end up with 15 commands, and it has to be detected twice in this function.
-# Potentially move into its own function at some point?
-execute if score WS.Game WS.Game matches 1 run function ws_datapack:archery/reusables/detect_score
+# Run as its own function now
+execute as @a if score WS.Game WS.Game matches 1 run function ws_datapack:archery/reusables/detect_score
 
 # Add a shot to the total count for this stage
-# TODO: This needs to be changed to be player-based for #6 to work
-execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target unless score WS.Archery.Shot WS.Archery.Shot > WS.Archery.Shot.Max WS.Archery.Shot run scoreboard players add WS.Archery.Shot WS.Archery.Shot 1
+execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target unless score WS.Archery.Shot WS.Archery.Shot > WS.Archery.Shot.Max WS.Archery.Shot run scoreboard players add @s WS.Archery.Shot 1
 execute as @a if score @s WS.Archery.Target > WS.Archery WS.Archery.Target run scoreboard players set @s WS.Archery.Target 0
 
 # If three shots has been reached, head to the next stage
