@@ -6,4 +6,4 @@ This directory is scripts written in Python used to make the installation proces
 
 ## Running
 
-More description is available in [CONTRIBUTING.md](/CONTRIBUTING.md), but on Windows download the latest .exe file (released in GitHub Actions with every commit to this directory) and on a Unix-based OS (e.g. macOS, Linux) run the Python script directly (you will need the `python3` or similar package to do this. I am working on a way to do this without python3.)
+More description is available in [CONTRIBUTING.md](/CONTRIBUTING.md), but just run the Python script directly. You will need Python 3 to do this, but I am working on a way to do this without python3, however it is still a work in progress.
