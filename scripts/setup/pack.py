@@ -1,9 +1,9 @@
 import pygit2
 import shutil
 
-version = 'v0.1.0-beta2'
+version = "v0.1.0-beta2"
 terminal_title = f"WS Datapack Development Environment Setup Helper {version}"
-print(f'\33]0;{terminal_title}\a', end='', flush=True)
+print(f"\33]0;{terminal_title}\a", end="", flush=True)
 
 def pause():
     programPause = input("Press the <ENTER> key to continue...")
@@ -18,15 +18,15 @@ print("This script will clone the repository to the directory ./ws-datapack/. If
 print("If you have an existing directory called 'ws-datapack', please delete it if it has a .git directory. Otherwise, the script will fail with PermissionError 5 (access is denied).")
 pause()
 
-repo_url = 'https://github.com/osfanbuff63/ws-datapack'
-repo_path = 'ws-datapack/'
+repo_url = "https://github.com/osfanbuff63/ws-datapack"
+repo_path = "ws-datapack/"
 
 try:
     repo = pygit2.clone_repository(repo_url, repo_path)
 except ValueError:
     try:
         print()
-        dir_path = 'ws-datapack/'
+        dir_path = "ws-datapack/"
         shutil.rmtree(dir_path)
     except PermissionError:
         print("Error code 5 - we couldn't delete an existing ws-datapack folder. Press Enter to continue and try to bypass this step, or press Ctrl+C to stop now.")
