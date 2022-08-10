@@ -1,7 +1,9 @@
+# WS Datapack Development Environment Setup Helper by osfanbuff63 and contributors
+# Licensed under the MIT License
 import pygit2
 import shutil
 
-version = "v0.1.0-beta2"
+version = "v0.1.0-beta3"
 terminal_title = f"WS Datapack Development Environment Setup Helper {version}"
 print(f"\33]0;{terminal_title}\a", end="", flush=True)
 

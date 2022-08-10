@@ -1,10 +1,12 @@
+# WS Datapack Documentation Setup Helper by osfanbuff63 and contributors
+# Licensed under the MIT License
 import os
 import pygit2
 import shutil
 import subprocess
 import sys
 
-version = "v0.1.0-beta1"
+version = "v0.1.0-beta2"
 terminal_title = f"WS Datapack Documentation Setup Helper {version}"
 print(f"\33]0;{terminal_title}\a", end="", flush=True)
 
