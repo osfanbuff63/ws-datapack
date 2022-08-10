@@ -1,4 +1,4 @@
-name: Python application
+name: Test and compile Python scripts
 on: [push, pull_request, workflow_dispatch]
 permissions:  # added using https://github.com/step-security/secure-workflows
   contents: read
