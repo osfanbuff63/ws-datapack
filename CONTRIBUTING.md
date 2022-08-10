@@ -1,12 +1,11 @@
 # Contributing to the WS Datapack
 
-<!-- TODO: make .sh and .bat scripts for all the command line commands -->
-
 Thanks in advance for wanting to contribute! There are two main spots where you can contribute, both in code (resource pack and data pack), and documentation. First, there's a few things you'll need to contribute no matter what:
 
 - A computer running Windows, macOS, or Linux (any distro is fine)
 - [`git`](https://git-scm.com/downloads) - used to track your changes on your machine
 - [`gh`](https://cli.github.com) - used to make a PR and submit your changes
+- **Recommended**: [Python 3](https://www.python.org) - used to run the script to install everything you need to start.
 
 From here, I'll split into two sections - documentation and code changes.
 
@@ -21,11 +20,11 @@ You will also need these things in addition to the standard requirements:
 
 ### Setting up for your work
 
-If you already have the repo locally to work on, you can skip this step. **MAKE SURE YOU HAVE THE PREREQUESITES BEFORE CONTINUING!**
+If you already have the repository locally to work on, you can skip this step. **MAKE SURE YOU HAVE THE PREREQUESITES BEFORE CONTINUING!**
 
-1. Go to the folder where you would like the repo to be and note the location. I usually tend to put mine on my Desktop (`~/Desktop`).
-2. Open a terminal and run `cd path/to/repo/folder`, where `/path/to/repo/folder` is the path you noted earlier (in my example, I'd run `cd ~/Desktop`). On Windows, I recommend using the new [Windows Terminal](https://docs.microsoft.com/en-us/windows/terminal/install), but any shell will work.
-3. Run `gh repo clone osfanbuff63/ws-datapack` and then `cd ws-datapack`. This does the same thing as `git clone <repo>`, but you don't have to get the repo HTTPS or SSH address, instead you can use the repo name. If you are on macOS or Linux, you can run those two commands using `gh repo clone osfanbuff63/ws-datapack && cd ws-datapack`, but I don't know how to do that on Windows.
+1. Go to the folder where you would like the repository to be and note the location. I usually tend to put mine on my Desktop (`~/Desktop`).
+2. Open a terminal and run `cd path/to/repository/folder`, where `/path/to/repository/folder` is the path you noted earlier (in my example, I'd run `cd ~/Desktop`). On Windows, I recommend using the new [Windows Terminal](https://docs.microsoft.com/en-us/windows/terminal/install), but any shell will work.
+3. Run the new Python script from [here (copy/paste if you want to use curl/wget)](https://raw.githubusercontent.com/osfanbuff63/ws-datapack/master/scripts/setup/pack.py) with `python pack.py` (or if you also have python2 installed e.g. on Linux, `python3 pack.py`). Once this completes, you'll be ready to go!
 4. (Optional), if you want to use a separate branch (which is recommended especially if you will be making multiple contributions), run `git checkout -B your-branch-here` with any branch name instead of `your-branch-here`.
 5. Open this folder in the IDE of your choice and start coding!
 
@@ -51,15 +50,13 @@ Documentation also requires a few things, in addition to the standard requiremen
 
 ### Setting up for your work
 
-If you already have the repo locally to work on, you can skip this step. **MAKE SURE YOU HAVE THE PREREQUESITES BEFORE CONTINUING!**
+If you already have the repository locally to work on, you can skip this step. **MAKE SURE YOU HAVE THE PREREQUESITES BEFORE CONTINUING!**
 
-1. Go to the folder where you would like the repo to be and note the location. I usually tend to put mine on my Desktop (`~/Desktop`).
-2. Open a terminal and run `cd path/to/repo/folder`, where `/path/to/repo/folder` is the path you noted earlier (in my example, I'd run `cd ~/Desktop`). On Windows, I recommend using the new [Windows Terminal](https://docs.microsoft.com/en-us/windows/terminal/install), but any shell will work.
-3. Run `gh repo clone osfanbuff63/ws-datapack` and then `cd ws-datapack`. This does the same thing as `git clone <repo>`, but you don't have to get the repo HTTPS or SSH address, instead you can use the repo name. If you are on macOS or Linux, you can run those two commands using `gh repo clone osfanbuff63/ws-datapack && cd ws-datapack && cd docs`, but I don't know how to do that on Windows. All this takes you to the docs folder of the repo.
+1. Go to the folder where you would like the repository to be and note the location. I usually tend to put mine on my Desktop (`~/Desktop`).
+2. Open a terminal and run `cd path/to/repository/folder`, where `/path/to/repository/folder` is the path you noted earlier (in my example, I'd run `cd ~/Desktop`). On Windows, I recommend using the new [Windows Terminal](https://docs.microsoft.com/en-us/windows/terminal/install), but any shell will work.
+3. Run the new Python script from [here (copy/paste if you want to use curl/wget)](https://raw.githubusercontent.com/osfanbuff63/ws-datapack/master/scripts/setup/docs.py) with `python docs.py` (or if you also have python2 installed e.g. on Linux, `python3 pack.py`). Once this completes, you'll be ready to go!
 4. (Optional), if you want to use a separate branch (which is recommended especially if you will be making multiple contributions), run `git checkout -B your-branch-here` with any branch name instead of `your-branch-here`.
-5. Run `cd docs`.
-6. Run `gem install bundler`, and then `bundle install` - this installs the dependencies for the project. This may take a bit, so be patient!
-7. Make your changes!
+5. Make your changes!
 
 ### Testing and submitting your work
 

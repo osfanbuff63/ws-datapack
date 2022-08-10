@@ -70,3 +70,8 @@ spyglass.json
 
 # Changelog for one tag. This should be ignored as if it is pushed to source it will all break
 changelog/
+
+# Script leftovers
+/scripts/setup/build
+/scripts/setup/dist
+*.spec
