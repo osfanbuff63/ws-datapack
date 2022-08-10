@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # WS Datapack Documentation Setup Helper by osfanbuff63 and contributors
 # Licensed under the MIT License
 import os
@@ -40,9 +41,10 @@ except ValueError:
         pause()
         pass
 try:
+    os.chdir("/ws-datapack")
     os.chdir("/docs/")
 except FileNotFoundError:
-    print("Huh? The docs directory doesn\"t seem to exist! Check the GitHub repo, otherwise join my Discord (https://osfanbuff63.github.io/discord) or create an issue on GitHub.")
+    print("Huh? The docs directory doesn\"t seem to exist! Check the GitHub repo for an issue, otherwise join my Discord (https://osfanbuff63.github.io/discord) or create an issue on GitHub.")
 
 try:
     subprocess.run(["gem install bundler", "bundle install"], check=True)
