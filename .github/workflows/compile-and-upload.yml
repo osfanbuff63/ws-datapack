@@ -39,12 +39,12 @@ jobs:
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Compile exe for development env
-      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}    
+      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
       run: |
         cd ./scripts/setup
         python setup_dev.py build
     - uses: benjlevesque/short-sha@v1.2
-      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}   
+      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
       id: short-sha
     - name: Upload exe for development env as artifact
       if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
