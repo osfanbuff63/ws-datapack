@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 # WS Datapack Development Environment Setup Helper by osfanbuff63 and contributors
 # Licensed under the MIT License
 import pygit2
