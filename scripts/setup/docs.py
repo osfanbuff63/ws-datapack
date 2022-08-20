@@ -45,13 +45,13 @@ try:
     os.chdir("/ws-datapack")
     os.chdir("/docs/")
 except FileNotFoundError:
-    print("Huh? The docs directory doesn\"t seem to exist! Check the GitHub repo for an issue, otherwise join my Discord (https://osfanbuff63.github.io/discord) or create an issue on GitHub.")
+    print("Huh? The docs directory doesn\"t seem to exist! Check the GitHub repo for an issue, otherwise join my Discord (https://osfanbuff63.tech/discord) or create an issue on GitHub.")
 
 try:
     subprocess.run(["gem install bundler", "bundle install"], check=True)
 except subprocess.CalledProcessError:
     print("Uh oh, doesn't look like Ruby or at least RubyGems is installed! Make sure you have RubyWithDevkit installed, then run the script again.")
-    print("If you can't figure it out, you can join my Discord for help: https://osfanbuff63.github.io/discord")
+    print("If you can't figure it out, you can join my Discord for help: https://osfanbuff63.tech/discord")
     sys.exit("RubyGems not installed")
 
 print("The setup helper has completed. To proceed, you will likely need `git` and `gh`.")

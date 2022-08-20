@@ -23,7 +23,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Documentation for the WS Datapack, a Wii Sports inspired datapack for Minecraft.
 
 baseurl: "/ws-datapack" # the subpath of your site, e.g. /blog
-url: "https://osfanbuff63.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://osfanbuff63.tech" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: osfanbuff63
 
 # Build settings

@@ -4,7 +4,7 @@
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/osfanbuff63/ws-datapack)](https://github.com/osfanbuff63/ws-datapack/releases/latest)
 [![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/osfanbuff63/ws-datapack?color=orange&include_prereleases&label=pre-release)](https://github.com/osfanbuff63/ws-datapack/releases)
 [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
-[![Documentation](https://img.shields.io/badge/documentation-click%20here!-green)](https://osfanbuff63.github.io/ws-datapack)
+[![Documentation](https://img.shields.io/badge/documentation-click%20here!-green)](https://osfanbuff63.tech/ws-datapack)
 
 # ws-datapack
 
