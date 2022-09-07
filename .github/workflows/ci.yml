@@ -1,123 +1,13 @@
-# Notice how there is an extra complile and upload step.
-# This is due to how the build-main job checks for errors. Instead of using a script,
-# such as, /gradlew build, with this being a datapack, it checks the source files instead. (see Check commands and Check JSON.)
-# This is completely intentional, please do not create a PR changing it!
-
 name: CI
 on: [push, pull_request, workflow_dispatch]
 jobs:
-  build-main:
-    name: Main CI Build
-    runs-on: ubuntu-latest
-    # Only run on PRs if the source branch is on someone else's repo
-    if: ${{ github.event_name != 'pull_request' || github.repository != github.event.pull_request.head.repo.full_name }}
-    steps:
-      - name: Harden Runner
-        uses: step-security/harden-runner@dd2c410b088af7c0dc8046f3ac9a8f4148492a95
-        with:
-         egress-policy: block
-         allowed-endpoints: >
-          artifactcache.actions.githubusercontent.com:443
-          files.pythonhosted.org:443
-          gel7acprodeus1file0.blob.core.windows.net:443
-          github.com:443
-          pipelines.actions.githubusercontent.com:443
-          pypi.org:443
-          api.github.com:443
-          prtcacprodeus2file7.blob.core.windows.net:443
-      - name: Checkout repo
-        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
-      - name: Dependency Review
-        if: github.event_name == 'pull_request'
-        uses: actions/dependency-review-action@23d1ffffb6fa5401173051ec21eba8c35242733f
-      - name: Check commands
-        uses: mcbeet/check-commands@740e5fb3c385a5a5775f9ab6c963745200cb71aa
-        with:
-          source: .
-          minecraft: 1.19
-      - name: Check JSON
-        uses: ocular-d/json-linter@7d3716a34bcd6fcc5b3b38141a21b9e02da6531d
-      - name: Compile and upload
-        uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
-        with:
-          name: ws-datapack v0.1.0-SNAPSHOT
-          path: |
-            assets/
-            data/
-            pack.mcmeta
-            pack.png
-          if-no-files-found: error
-
-  build-packsquash:
-    permissions:
-      actions: read  # for ComunidadAylas/PackSquash-action to get latest artifact
-      contents: read  # for actions/checkout to fetch code
-    # Only run on PRs if the source branch is on someone else's repo
-    if: ${{ github.event_name != 'pull_request' || github.repository != github.event.pull_request.head.repo.full_name }}
-    runs-on: ubuntu-latest
-    name: Build with PackSquash
-    steps:
-      - name: Harden Runner
-        uses: step-security/harden-runner@dd2c410b088af7c0dc8046f3ac9a8f4148492a95
-        with:
-          egress-policy: block
-          allowed-endpoints: >
-            api.github.com:443
-            artifactcache.actions.githubusercontent.com:443
-            gel7acprodeus1file0.blob.core.windows.net:443
-            github.com:443
-            objects.githubusercontent.com:443
-            prtcacprodeus2file7.blob.core.windows.net:443
-      - name: Checkout repo
-        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
-        with:
-          fetch-depth: 0
-      - name: Run PackSquash
-        uses: ComunidadAylas/PackSquash-action@cdeba7365a1491b436b1a9c381d63b5ee6c27f2e
-        with:
-          path: ./
-          token: ${{ secrets.GITHUB_TOKEN }}
-          minify_json_files: true
-          validate_pack_metadata_file: true
-          allow_optifine_mod: true
-          delete_bloat_json_keys: true
-          artifact_name: '[UNZIP ME] optimized-ws-datapack v0.1.0-SNAPSHOT'
-
-  lint:
-    name: Lint Code Base
-    runs-on: ubuntu-latest
-    # Only run on PRs if the source branch is on someone else's repo
-    if: ${{ github.event_name != 'pull_request' || github.repository != github.event.pull_request.head.repo.full_name }}
-    # This is needed since this takes like 2 min to run
-    concurrency:
-      group: ${{ github.ref }}
-      cancel-in-progress: true
-    steps:
-      - name: Harden Runner
-        uses: step-security/harden-runner@dd2c410b088af7c0dc8046f3ac9a8f4148492a95
-        with:
-          egress-policy: block
-          allowed-endpoints: >
-            api.github.com:443
-            github.com:443
-            gheus22ubt20eus211diag.blob.core.windows.net:443
-      - name: Checkout repo
-        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
-        with:
-          # Full git history is needed to get a proper list of changed files within `super-linter`
-          fetch-depth: 0
-      - name: Lint code base
-        uses: github/super-linter@01d3218744765b55c3b5ffbb27e50961e50c33c5
-        # Am I the only one that finds it weird to use `env` instead of `with`? Lol
-        env:
-          VALIDATE_ALL_CODEBASE: false
-          DEFAULT_BRANCH: master
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VALIDATE_HTML: false
-          VALIDATE_MARKDOWN: false
-          IGNORE_GITIGNORED_FILES: true
-          VALIDATE_EDITORCONFIG: false
-          VALIDATE_PYTHON_BLACK: false
-          VALIDATE_PYTHON_ISORT: false
-          YAML_CONFIG_FILE: .yaml-lint.yml
-          PYTHON_FLAKE8_CONFIG_FILE: .flake8
+  main-ci:
+    uses: osfanbuff63/action-workflows/.github/workflows/mcfunction.yml@v1
+    with:
+      version: v0.1.0
+      files: |
+        assets/
+        data/
+        pack.mcmeta
+        pack.png
+        LICENSE.md
