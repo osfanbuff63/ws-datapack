@@ -16,7 +16,7 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@d0651293c4a5a52e711f25b41b05b2212f385d28
     - name: Set up Python 3.10
-      uses: actions/setup-python@13ae5bb136fac2878aff31522b9efb785519f984
+      uses: actions/setup-python@2c3dd9e7e29afd70cc0950079bde6c979d1f69f9
       with:
         python-version: "3.10"
         check-latest: true
