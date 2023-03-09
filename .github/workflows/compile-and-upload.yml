@@ -21,7 +21,7 @@ jobs:
         python-version: "3.10"
         check-latest: true
     - name: Cache dependencies
-      uses: actions/cache@9b0c1fce7a93df8e3bb8926b0d6e9d89e92f20a7
+      uses: actions/cache@940f3d7cf195ba83374c77632d1e2cbb2f24ae68
       with:
         path: ~\AppData\Local\pip\Cache
         key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
